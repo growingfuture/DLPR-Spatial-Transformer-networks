@@ -13,7 +13,7 @@
 3. sampler: input map과 sampling grid를 input으로 받아 최종적으로 transformed output을 만들어냄
 
 
-##### 
+##### Detail Process
 > 1. localisation network에서는 input feature map을 가지고 수많은 은닉계층을 통해 예측한 transformation의 parameters(theta)를 output으로 내뱉는다.
 
 figure(3)
@@ -34,7 +34,8 @@ figure(3)
 
 > 2. grid generator에서는 1번, localisation network에서 가져온 theta를 parameter로 받아서 sampling grid를 만든다. 
 > sampling grid는 points들의 set로 각각의 point는 transformed output을 만들기 위해서 input map에서 뽑을 위치를 나타낸다. 
-
+>
+> Differentiable Image Sampling(식설명)
 
 
 
