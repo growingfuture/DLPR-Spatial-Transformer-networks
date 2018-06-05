@@ -1,3 +1,4 @@
+daviddao, spatial_transformer.py, https://github.com/daviddao/spatial-transformer-tensorflow/blob/master/spatial_transformer.py, (2018)
 # Copyright 2016 The TensorFlow Authors. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
