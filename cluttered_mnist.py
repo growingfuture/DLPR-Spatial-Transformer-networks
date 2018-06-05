@@ -48,7 +48,7 @@ y = tf.placeholder(tf.float32, [None, 10])
 # dimension should not change size.
 x_tensor = tf.reshape(x, [-1, 40, 40, 1])
 
-# %% We'll setup the two-layer localisation network to figure out the
+""" =================== We'll setup the two-layer localisation network to figure out the ====================== """
 # %% parameters for an affine transformation of the input
 # %% Create variables for fully connected layer
 W_fc_loc1 = weight_variable([1600, 20])
@@ -74,7 +74,7 @@ h_fc_loc2 = tf.nn.tanh(tf.matmul(h_fc_loc1_drop, W_fc_loc2) + b_fc_loc2)
 out_size = (40, 40)
 h_trans = transformer(x_tensor, h_fc_loc2, out_size)
 
-# %% We'll setup the first convolutional layer
+""" =================== We'll setup the first convolutional layer ====================== """
 # Weight matrix is [height x width x input_channels x output_channels]
 filter_size = 3
 n_filters_1 = 16
@@ -107,7 +107,7 @@ h_conv2 = tf.nn.relu(
                  padding='SAME') +
     b_conv2)
 
-# %% We'll now reshape so we can connect to a fully-connected layer:
+""" ==============  We'll now reshape so we can connect to a fully-connected layer ============ """
 h_conv2_flat = tf.reshape(h_conv2, [-1, 10 * 10 * n_filters_2])
 
 # %% Create a fully-connected layer:
@@ -134,15 +134,14 @@ grads = opt.compute_gradients(cross_entropy, [b_fc_loc2])
 correct_prediction = tf.equal(tf.argmax(y_logits, 1), tf.argmax(y, 1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, 'float'))
 
-# %% We now create a new session to actually perform the initialization the
-# variables:
+""" =========== We now create a new session to actually perform the initialization the variables: ========== """
 sess = tf.Session()
 sess.run(tf.initialize_all_variables())
 
 
 # %% We'll now train in minibatches and report accuracy, loss:
 iter_per_epoch = 100
-n_epochs = 500
+n_epochs = 20
 train_size = 10000
 
 indices = np.linspace(0, 10000 - 1, iter_per_epoch)
