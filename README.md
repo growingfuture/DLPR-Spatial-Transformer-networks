@@ -64,6 +64,7 @@
 
 #### 3-3c. 논문에서의 선형보간법(integer & bilinear sampling kernel)
 > 본 논문에서는 interpolation으로 integer sampling kernel과 bilinear sampling kernel을 소개하고 있다.(interpolation == smapling kernel)
+![ex_screenshot](https://github.com/growingfuture/Deep-Learning-Paper-Review/blob/master/formula.PNG?raw=true)
 
 
 > * Unm : feature map의 (n,m)위치의 value값 / v : output의 위치 (xt,yt)
