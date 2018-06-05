@@ -3,7 +3,7 @@
 
 ### 1. Introduction
 > * 기존의 cnn에서는 물체가 공간상에 변화가 있을때 탐지를 못하는 문제가 있었다. (rotation(회전),translation(평행이동)등)
-> * spatial pooling(=down sampling, =sub sampling)을 하게되면 중요한 정보만 추출함으로 spatially invariant할 수 있지만 제약적임으로 동적으로 보완할 수 있는 모듈을 만들고자 한다.
+> * spatial pooling(=down sampling, =sub sampling)을 하게되면 중요한 정보만 추출하므로 spatially invariant할 수 있지만 제약적임으로 동적으로 보완할 수 있는 모듈을 만들고자 한다.
 
 ![ex_screenshot](https://jamiekang.github.io/media/2017-05-27-spatial-transformer-networks-ex1.png)
 
@@ -16,8 +16,6 @@
 > 3. sampler: input map과 sampling grid를 input으로 받아 최종적으로 transformed output을 만들어낸다.
 
 ![ex_screenshot](https://jamiekang.github.io/media/2017-05-27-spatial-transformer-networks-fig2.png)
-
-
 
 
 ### 3. Detail Process
@@ -105,6 +103,8 @@
 
 ### My Experiments Result
 #### before
-![ex_screenshot](https://github.com/growingfuture/Deep-Learning-Paper-Review/blob/master/before.png?raw=true)
+![ex_screenshot](https://github.com/growingfuture/Deep-Learning-Paper-Review/blob/master/after.png?raw=true)
+
 #### after
-![ex_screenshot]
+![ex_screenshot](https://github.com/growingfuture/Deep-Learning-Paper-Review/blob/master/before.png?raw=true)
+
