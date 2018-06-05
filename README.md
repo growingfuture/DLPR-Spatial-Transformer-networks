@@ -104,3 +104,7 @@
 
 
 ### My Experiments Result
+#### before
+![ex_screenshot](https://github.com/growingfuture/Deep-Learning-Paper-Review/blob/master/before.png?raw=true)
+#### after
+![ex_screenshot]
