@@ -6,7 +6,7 @@
 > * spatial pooling(=down sampling, =sub sampling)을 하게되면 중요한 정보만 추출함으로 spatially invariant할 수 있지만 제약적임으로 동적으로 보완할 수 있는 모듈을 만들고자 한다.
 
 ![ex_screenshot](https://jamiekang.github.io/media/2017-05-27-spatial-transformer-networks-ex1.png)
-(jamiekang.github, 2018)
+
 
 ### 2. Spatial Transformers Schema
 
@@ -16,7 +16,7 @@
 > 3. sampler: input map과 sampling grid를 input으로 받아 최종적으로 transformed output을 만들어낸다.
 
 ![ex_screenshot](https://jamiekang.github.io/media/2017-05-27-spatial-transformer-networks-fig2.png)
-(jamiekang.github, 2018)
+
 
 
 
@@ -32,14 +32,15 @@
 
 #### 3-2. Grid generator
 ![ex_screenshot](https://camo.githubusercontent.com/bb81d6267f2123d59979453526d958a58899bb4f/687474703a2f2f692e696d6775722e636f6d2f4578474456756c2e706e67)
-(camo.githubusercontent, 2018)
+
+![ex_screenshot](https://tang.su/images/paper-notes/Spatial-Transformer-Networks/pic1.png)
 > * grid generator에서는 localisation network에서 가져온 theta를 parameter로 받아서 sampling grid를 만든다. 
 
 > * sampling grid의 각각의 point는 input feature map에서 뽑을 위치를 나타낸다. 
 
 
 #### 3-2a. Parameterised Sampling Grid: Affine & Attention Transformer
-![ex_screenshot](https://tang.su/images/paper-notes/Spatial-Transformer-Networks/pic1.png)
+
 > * xs,ys : T(G)의 픽셀(위치)이며, inuput feature에서 sampling kernel을 적용한 값을 가져올 spatial location을 나타낸다.
 > * xt,yt : output featuremap의 target픽셀(위치)이다.
 > * Affine Transformation은 선의 평행성은 유지가 되면서 이미지를 변환하는 것이다.
@@ -72,19 +73,32 @@
 > * ingter sampling kernel의 경우, x+0.5를 반올림하여 x에서 가장 가까운 integer를 찾는 방법으로 결국 pixel(x,y)에서 가장 가까운 점을 찾는다고 보면 된다.
 > * bilinear sampling kernel의 경우, max함수를 써서 nearest neighbor interpolation에 비하여 좀 더 스무딩하게 출력하는는 보간법이다.
 >![ex_screenshot] https://jamiekang.github.io/media/2017-05-27-spatial-transformer-networks-interpolation.jpg
-> linear, bilinear 선형보간법 참고: https://m.blog.naver.com/PostView.nhn?blogId=aorigin&logNo=220947541918&proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F
+> * linear, bilinear 선형보간법 참고: https://m.blog.naver.com/PostView.nhn?blogId=aorigin&logNo=220947541918&proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F
 
 
 ### Spatial Transformer Networks
 > * Localisation network, grid generator와 sampler로 구성한 spatial transformer module을 CNN 구조에 끼워 넣은 것을 Spatial Transformer Network라고 한다.
 > * Spatial transformer module은 CNN의 어느 지점에나, 몇 개라도 이론상 집어넣을 수 있다. 
 > * 해당 모듈은 계산속도가 굉장히 빠르고 상황에 따라 속도를 증가시킬 수도 있다. (down sampling의 역할)
->
->
->
+
+
+
+
 ### Experiments
 >
-> 
-.
->
+#### Distorted MNIST
+* 실험에서 사용된 MNIST 데이터는 4가지 방법으로 distorted 되어있음: rotation (R), rotation-translation-scale (RTS), projective transformation (P), elastic warping (E)
 
+![ex_screenshot](https://jamiekang.github.io/media/2017-05-27-spatial-transformer-networks-table1.png)
+
+#### Distorted Street View House Numbers
+* 20만 개의 실제 집 주소 표지의 사진으로 구성된 Street View House Numbers (SVHN) 데이터셋에서 숫자를 인식하는 실험
+![ex_screenshot](https://jamiekang.github.io/media/2017-05-27-spatial-transformer-networks-table2.png)
+
+
+#### Fine-Grained Classification
+200종의 새 사진 11,788장으로 구성된 Caltech의 CUB-200-2011 birds 데이터셋에 fine-grained bird classification을 적용한 실험
+![ex_screenshot](https://jamiekang.github.io/media/2017-05-27-spatial-transformer-networks-table3.png)
+
+
+### My Experiments Result
