@@ -34,28 +34,26 @@
 ![ex_screenshot](https://camo.githubusercontent.com/bb81d6267f2123d59979453526d958a58899bb4f/687474703a2f2f692e696d6775722e636f6d2f4578474456756c2e706e67)
 (camo.githubusercontent, 2018)
 > * grid generator에서는 localisation network에서 가져온 theta를 parameter로 받아서 sampling grid를 만든다. 
-> * xs,ys : T(G)의 픽셀(위치)이며, inuput feature에서 sampling kernel을 적용한 값을 가져올 spatial location을 나타낸다.
-> * xt,yt : output featuremap의 target픽셀(위치)이다.
+
 > * sampling grid의 각각의 point는 input feature map에서 뽑을 위치를 나타낸다. 
 
 
 #### 3-2a. Parameterised Sampling Grid: Affine & Attention Transformer
 ![ex_screenshot](https://tang.su/images/paper-notes/Spatial-Transformer-Networks/pic1.png)
+> * xs,ys : T(G)의 픽셀(위치)이며, inuput feature에서 sampling kernel을 적용한 값을 가져올 spatial location을 나타낸다.
+> * xt,yt : output featuremap의 target픽셀(위치)이다.
 > * Affine Transformation은 선의 평행성은 유지가 되면서 이미지를 변환하는 것이다.
 > * Affine transform은 6개의 parameter로 scale, rotation, translation, skew, cropping을 표현할 수 있다.
-> * 3개의 parameter로 isotropic scale (= 가로와 세로 비율이 같은 확대/축소), translation, cropping을 표현하는 attention model이 있다.
+> * 3개의 parameter로 isotropic scale (= 가로와 세로 비율이 같은 확대/축소), translation, cropping을 표현하는 attention transform도 있다.
 
-
-> 3-3. Sampler 
+#### 3-3. Sampler 
 > * 마지막으로 feature map과 sampling grid는 sampler의 input으로 들어오고, grid points에서 sampling된 input으로 output map을 만들게 된다.
 
-
-> 3-1. Differentiable Image Sampling
-
+#### 3-3a. Differentiable Image Sampling
 ![ex_screenshot](http://northstar-www.dartmouth.edu/doc/idl/html_6.2/images/Interpolation_Methods-13.jpg)
-> Image sampling은 미분가능한 kernel으로 위의 그림에서 보는 것처럼 sampling의 위치가 정확히 정수 좌표 값을 가지지 않을 수 잇기 때문에 interpolation(선형보간법)을 통해 계산을 해야한다.
+> Image sampling은 미분가능한 kernel로 선형보간법을 사용한다.
 
-> 3-1a interpolation(선형보간법)과 integer & bilinear sampling kernel
+##### 3-3b. interpolation(선형보간법)
 >![ex_screenshot](https://t1.daumcdn.net/cfile/tistory/2378C54C52D3842030)
 > 선형보간법은 x1, x2에서 데이터 값을 알고 있을 때 x1<=xi<=x2에서 값을 추정하는 것을 말한다.
 
@@ -63,6 +61,7 @@
 
 > 이 경우 보간 방법은 원래 사각형의 네점 ABCD를 A'B'C'D'으로 변환시키는 선형변환(linear transformation) T를 구한 후, 구한 T를 이용하여 P를 변환시킨 P'를 구하고 단위 정사각형에서 bilinear interpolation을 수행하면 된다
 
+#### 3-3c. 논문에서의 선형보간법(integer & bilinear sampling kernel)
 > 본 논문에서는 interpolation으로 integer sampling kernel과 bilinear sampling kernel을 소개하고 있다.(interpolation == smapling kernel)
 
 
