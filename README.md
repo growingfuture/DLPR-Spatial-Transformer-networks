@@ -51,8 +51,7 @@
 > * 마지막으로 feature map과 sampling grid는 sampler의 input으로 들어오고, grid points에서 sampling된 input으로 output map을 만들게 된다.
 
 #### 3-3a. Differentiable Image Sampling
-![ex_screenshot](http://northstar-www.dartmouth.edu/doc/idl/html_6.2/images/Interpolation_Methods-13.jpg)
-> Image sampling은 미분가능한 kernel로 선형보간법을 사용한다.
+> Image sampling은 미분가능한 선형보간법을 사용한다.
 
 ##### 3-3b. interpolation(선형보간법)
 >![ex_screenshot](https://t1.daumcdn.net/cfile/tistory/2378C54C52D3842030)
