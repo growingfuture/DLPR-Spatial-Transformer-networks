@@ -72,7 +72,9 @@
 > * c : channel
 > * ingter sampling kernel의 경우, x+0.5를 반올림하여 x에서 가장 가까운 integer를 찾는 방법으로 결국 pixel(x,y)에서 가장 가까운 점을 찾는다고 보면 된다.
 > * bilinear sampling kernel의 경우, max함수를 써서 nearest neighbor interpolation에 비하여 좀 더 스무딩하게 출력하는는 보간법이다.
-![ex_screenshot] (https://jamiekang.github.io/media/2017-05-27-spatial-transformer-networks-interpolation.jpg)
+
+![ex_screenshot](https://jamiekang.github.io/media/2017-05-27-spatial-transformer-networks-interpolation.jpg)
+
 > * linear, bilinear 선형보간법 참고: https://m.blog.naver.com/PostView.nhn?blogId=aorigin&logNo=220947541918&proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F
 
 
