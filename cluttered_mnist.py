@@ -173,3 +173,67 @@ for epoch_i in range(n_epochs):
     # theta = sess.run(h_fc_loc2, feed_dict={
     #        x: batch_xs, keep_prob: 1.0})
     # print(theta[0])
+
+   
+
+
+"""=========drawing==========""
+
+import matplotlib.pyplot as plt
+first_array=batch_xs[2]
+prev_array=X_train[2]
+len(batch_xs[0])
+#Not sure you even have to do that if you just want to visualize it
+
+plt.imshow()
+plt.imshow(first_array.reshape(40,40))
+plt.imshow(prev_array.reshape(40,40))
+#Actually displaying the plot if you are not in interactive mode
+plt.show()
+
+"""beforetest"""
+np.random.seed = 99
+example_indices = np.random.randint(1, 1000, size=20)
+
+ith = 0
+plt.rcParams['figure.figsize'] = (16.0, 16.0)
+plt.subplots_adjust(wspace=0, hspace=.2)
+for index in example_indices:
+    
+    plt.subplot(5, 4, ith+1)
+    plt.imshow(mnist_cluttered['X_test'].reshape(1000, 40, 40)[index, ...])
+    
+    truth = mnist_cluttered['y_test'][index][0]
+
+    plt.title("Image: {}, Label: {}, Prediction: ?".format(index, truth), {'fontsize': 10})
+    plt.axis('off')
+    ith += 1
+    
+"""test""" 
+
+
+
+test_acc, test_predictions = sess.run([accuracy, predictions], feed_dict={x: X_test, y: Y_test, keep_prob: 1.0})
+print(test_acc)
+    
+ 
+"""after test"""   
+ith = 0
+plt.rcParams['figure.figsize'] = (16.0, 16.0)
+plt.subplots_adjust(wspace=0, hspace=.2)
+for index in example_indices:
+    
+    plt.subplot(5, 4, ith+1)
+    plt.imshow(h_trans.reshape(1000, 40, 40)[index, ...])
+    
+    truth = mnist_cluttered['y_test'][index][0]
+    pred = test_predictions[index]
+
+    if truth == pred:
+        label_color = 'black'
+    else:
+        label_color = 'red'
+
+    plt.title("Image: {}, Label: {}, Prediction: {}".format(index, truth, pred), {'fontsize': 10},  color=label_color)
+    plt.axis('off')
+    ith += 1
